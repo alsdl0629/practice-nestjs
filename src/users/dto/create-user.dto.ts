@@ -4,7 +4,7 @@ import {BadRequestException} from "@nestjs/common";
 
 export class CreateUserDto {
     @Transform(({ value, obj}) => {
-        if (obj.password.include(obj.name.trim())) {
+        if (obj.password.includes(obj.name.trim())) {
             throw new BadRequestException('password는 name과 같은 문자열을 포함할 수 없습니다.');
         }
         return value.trim();
